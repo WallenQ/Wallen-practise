@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
  * @author Wallen
  * @date 2021/10/22 22:11
  */
-public class Worker01 {
+public class Worker02 {
     /**
      * 队列名称
      */
@@ -32,7 +32,7 @@ public class Worker01 {
             System.out.println(consumerTag + "消费者取消消费接口回调逻辑");
         };
 
-        System.out.println("C1等待接收消息。。。。。。");
+        System.out.println("C2等待接收消息。。。。。。");
         /*
          * 消费消息
          * 1.队列名称

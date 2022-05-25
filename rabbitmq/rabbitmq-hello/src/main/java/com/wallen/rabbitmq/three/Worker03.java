@@ -40,6 +40,9 @@ public class Worker03 {
             System.out.println(consumerTag + "消费者取消消费接口回调逻辑");
         };
 
+        //不公平分发
+        channel.basicQos(1);
+
         /*
          * 消费消息
          * 1.队列名称

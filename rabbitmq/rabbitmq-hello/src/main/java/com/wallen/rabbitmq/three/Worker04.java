@@ -29,7 +29,7 @@ public class Worker04 {
 
         //声明接收消息
         DeliverCallback deliverCallback = (consumerTag, message) -> {
-            //睡1秒
+            //睡30秒
             SleepUtils.sleep(30);
             System.out.println("接收到的消息：" + new String(message.getBody(), StandardCharsets.UTF_8));
             //手动应答
@@ -39,6 +39,9 @@ public class Worker04 {
         CancelCallback cancelCallback = consumerTag -> {
             System.out.println(consumerTag + "消费者取消消费接口回调逻辑");
         };
+
+        //不公平分发
+        channel.basicQos(1);
 
         /*
          * 消费消息

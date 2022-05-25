@@ -1,6 +1,7 @@
 package com.wallen.rabbitmq.three;
 
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.MessageProperties;
 import com.wallen.rabbitmq.utils.RabbitMQUtils;
 
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class Task02 {
              * 发送一个消息
              * 1.交换机
              * 2.路由的Key，队列名称
-             * 3.其他参数信息
+             * 3.其他参数信息：消息持久化(MessageProperties.PERSISTENT_TEXT_PLAIN)
              * 4.发送的消息体
              */
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));

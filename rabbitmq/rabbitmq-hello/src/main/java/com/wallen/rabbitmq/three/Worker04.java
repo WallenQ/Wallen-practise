@@ -41,7 +41,7 @@ public class Worker04 {
         };
 
         //不公平分发
-        channel.basicQos(1);
+        channel.basicQos(5);
 
         /*
          * 消费消息

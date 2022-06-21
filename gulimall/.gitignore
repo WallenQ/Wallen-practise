@@ -25,3 +25,6 @@ generatorConfig.xml
 
 **/mvnw
 **/mvnw.cmd
+LICENSE
+Dockerfile
+docker-compose.yml

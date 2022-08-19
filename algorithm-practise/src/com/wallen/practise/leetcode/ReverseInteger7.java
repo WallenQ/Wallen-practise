@@ -13,7 +13,7 @@ package com.wallen.practise.leetcode;
  * @author Wallen
  * 2020/7/6 18:38
  */
-public class ReverseInteger {
+public class ReverseInteger7 {
 
 	public static void main(String[] args) {
 		System.out.println(reverseIntegerMethod(-2147483648));

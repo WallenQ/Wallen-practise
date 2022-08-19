@@ -12,7 +12,7 @@ package com.wallen.practise.leetcode;
  * @author Wallen
  * 2020/7/17 15:11
  */
-public class AddTwoNumbers {
+public class AddTwoNumbers2 {
 
 	public static void main(String[] args) {
 		ListNode l1 = new ListNode(5);

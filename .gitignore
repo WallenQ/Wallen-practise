@@ -32,3 +32,5 @@ rebel.xml
 jrebel-classpath-8348.jar
 *.bak
 .DS_Store
+/rabbitmq/rabbitmq-hello/.idea/
+/algorithm-practise/.idea/

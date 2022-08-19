@@ -14,7 +14,7 @@ package com.wallen.practise.leetcode;
  * @author Wallen
  * 2019/11/27 12:12
  */
-public class twoSum {
+public class TwoSum1 {
 	public static void main(String[] args) {
 		int[] nums = new int[]{0, 1, 3, 0};
 		int target = 0;

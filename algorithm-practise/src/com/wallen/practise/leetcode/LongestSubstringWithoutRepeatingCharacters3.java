@@ -24,7 +24,7 @@ import java.util.Set;
  * @author Wallen
  * 2020/7/30 16:32
  */
-public class LengthOfLongestSubstring {
+public class LongestSubstringWithoutRepeatingCharacters3 {
 	public static void main(String[] args) {
 		System.out.println(method("abcabcbb"));
 		System.out.println(method("bbbbb"));

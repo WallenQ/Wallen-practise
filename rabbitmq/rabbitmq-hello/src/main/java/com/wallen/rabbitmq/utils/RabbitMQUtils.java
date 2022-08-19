@@ -27,9 +27,9 @@ public class RabbitMQUtils {
         //工厂IP 连接RabbitMQ的队列
         connectionFactory.setHost("127.0.0.1");
         //用户名
-        connectionFactory.setUsername("guest");
+        connectionFactory.setUsername("user1");
         //密码
-        connectionFactory.setPassword("guest");
+        connectionFactory.setPassword("123456");
         //创建连接
         Connection connection = connectionFactory.newConnection();
         //获取信道

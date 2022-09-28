@@ -1,4 +1,4 @@
-package com.wallen.practise.leetcode;
+package com.wallen.practise.leetcode.array;
 
 /**
  * 34. 在排序数组中查找元素的第一个和最后一个位置
@@ -8,9 +8,7 @@ package com.wallen.practise.leetcode;
  * 你必须设计并实现时间复杂度为O(log n)的算法解决此问题。
  * <p>
  * 示例 1：输入：nums = [5,7,7,8,8,10], target = 8,输出：[3,4]
- * <p>
  * 示例2：输入：nums = [5,7,7,8,8,10], target = 6,输出：[-1,-1]
- * <p>
  * 示例 3：输入：nums = [], target = 0,输出：[-1,-1]
  * <p>
  * 链接：https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array

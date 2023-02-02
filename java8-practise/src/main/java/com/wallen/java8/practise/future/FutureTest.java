@@ -1,4 +1,4 @@
-package com.wallen.java8.practise;
+package com.wallen.java8.practise.future;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
@@ -28,13 +28,10 @@ public class FutureTest {
                 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
 
-        Future<Double> future = executor.submit(new Callable<Double>() {
-            @Override
-            public Double call() throws Exception {
-                Thread.sleep(500);
-                System.out.println(111);
-                return 111D;
-            }
+        Future<Double> future = executor.submit(() -> {
+            Thread.sleep(500);
+            System.out.println(111);
+            return 111D;
         });
         System.out.println(222);
         try {

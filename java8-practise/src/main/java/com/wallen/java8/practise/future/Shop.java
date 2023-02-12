@@ -1,6 +1,9 @@
 package com.wallen.java8.practise.future;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
@@ -16,45 +19,44 @@ import java.util.concurrent.TimeUnit;
  * @author Wallen
  * @date 2023/2/2 11:22
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Shop {
 
-    public static void main(String[] args) {
-        Shop shop = new Shop();
-        long start = System.nanoTime();
-        Future<Double> futurePrice = shop.getPriceAsync("my favorite produce");
-        long invocationTime = (System.nanoTime() - start) / 1_000_000L;
-        System.out.println("Invocation returned after " + invocationTime + " msecs");
+    private String name;
 
-        //TODO 执行其他操作
+    private final ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("demo-pool-%d").build();
 
-        try {
-            double price = futurePrice.get();
-            System.out.printf("Price is %.2f%n",price);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        }
-
-        long retrievalTime = (System.nanoTime() - start) / 1_000_000L;
-        System.out.println("Price returned after " + retrievalTime + " msecs");
-    }
+    /**
+     * Common Thread Pool
+     */
+    private final ExecutorService executor = new ThreadPoolExecutor(5, 200, 0L, TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
 
     public Future<Double> getPriceAsync(String product) {
-        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
-                .setNameFormat("demo-pool-%d").build();
+        return CompletableFuture.supplyAsync(() -> calculatePrice(product));
+    }
 
-        //Common Thread Pool
-        ExecutorService executor = new ThreadPoolExecutor(5, 200,
-                0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+    public Future<Double> getPriceAsync1(String product) {
+        CompletableFuture<Double> futurePrice = new CompletableFuture<>();
+        executor.submit(() -> {
+            try {
+                double price = calculatePrice(product);
+                futurePrice.complete(price);
+            } catch (Exception exception) {
+                futurePrice.completeExceptionally(exception);
+            }
+        });
+        return futurePrice;
+    }
 
+    public Future<Double> getPriceAsync2(String product) {
         CompletableFuture<Double> futurePrice = new CompletableFuture<>();
         executor.submit(() -> {
             double price = calculatePrice(product);
             futurePrice.complete(price);
         });
-
         return futurePrice;
     }
 
@@ -74,5 +76,25 @@ public class Shop {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void main(String[] args) {
+        Shop shop = new Shop();
+        long start = System.nanoTime();
+        Future<Double> futurePrice = shop.getPriceAsync("my favorite produce");
+        long invocationTime = (System.nanoTime() - start) / 1_000_000L;
+        System.out.println("Invocation returned after " + invocationTime + " msecs");
+
+        //TODO 执行其他操作
+
+        try {
+            double price = futurePrice.get();
+            System.out.printf("Price is %.2f%n", price);
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
+        long retrievalTime = (System.nanoTime() - start) / 1_000_000L;
+        System.out.println("Price returned after " + retrievalTime + " msecs");
     }
 }

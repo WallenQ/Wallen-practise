@@ -1,4 +1,4 @@
-package com.wallen.rabbitmq.eight;
+package com.wallen.rabbitmq.eight.ttl;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.BuiltinExchangeType;

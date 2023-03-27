@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeoutException;
 
 /**
- *
+ * Fanout
  * @author wallen
  * @date 2023/3/19 14:06
  */

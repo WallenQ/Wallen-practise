@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeoutException;
 
 /**
+ * Direct exchange
  *
  * @author wallen
  * @date 2023/3/19 14:06
@@ -26,7 +27,7 @@ public class DirectLog {
 
         while (scanner.hasNext()) {
             String message = scanner.next();
-            channel.basicPublish(EXCHANGE_NAME,"error",null,message.getBytes(StandardCharsets.UTF_8));
+            channel.basicPublish(EXCHANGE_NAME, "error", null, message.getBytes(StandardCharsets.UTF_8));
             System.out.println("生产者发出消息：" + message);
         }
     }

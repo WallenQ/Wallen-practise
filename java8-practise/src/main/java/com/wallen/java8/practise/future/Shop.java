@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class Shop {
 
     private String name;
+    Random random = new Random();
 
     private final ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("demo-pool-%d").build();
 
@@ -33,6 +34,11 @@ public class Shop {
      */
     private final ExecutorService executor = new ThreadPoolExecutor(5, 200, 0L, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+
+    public Shop(String name) {
+        this.name = name;
+        random = new Random((long) name.charAt(0) * name.charAt(1) * name.charAt(2));
+    }
 
     public Future<Double> getPriceAsync(String product) {
         return CompletableFuture.supplyAsync(() -> calculatePrice(product));
@@ -64,9 +70,14 @@ public class Shop {
         return calculatePrice(product);
     }
 
+    public String getPriceString(String product) {
+        double price = calculatePrice(product);
+        Discount.Code code = Discount.Code.values()[random.nextInt(Discount.Code.values().length)];
+        return name + ":" + price + ":" + code;
+    }
+
     private double calculatePrice(String product) {
         delay();
-        Random random = new Random();
         return random.nextDouble() * product.charAt(0) + product.charAt(1);
     }
 
@@ -76,6 +87,12 @@ public class Shop {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String getDiscountPrice(String product) {
+        double price = calculatePrice(product);
+        Discount.Code code = Discount.Code.values()[random.nextInt(Discount.Code.values().length)];
+        return String.format("%s:%.2f:%s", name, price, code);
     }
 
     public static void main(String[] args) {

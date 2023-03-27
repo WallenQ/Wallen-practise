@@ -3,6 +3,9 @@ package com.wallen.java8.practise.future;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 import java.util.stream.Collectors;
 
 /**
@@ -11,12 +14,26 @@ import java.util.stream.Collectors;
  */
 public class ShopTest {
     List<Shop> shops = Arrays.asList(new Shop("BestPrice"),
-            new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"),
-            new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"),
-            new Shop("LetsSaveBig"),
+            new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"), new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"),
+            new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"), new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"),
+            new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"), new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"),
+            new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"), new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"),
+            new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"), new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"),
+            new Shop("LetsSaveBig"), new Shop("MyFavoriteShop"), new Shop("LetsSaveBig"),
             new Shop("BuyAll"));
 
+    private final Executor executor = Executors.newFixedThreadPool(Math.min(shops.size(), 100), new ThreadFactory() {
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(r);
+            t.setDaemon(true);
+            return t;
+        }
+    });
+
+
     public static void main(String[] args) {
+        System.out.println(Runtime.getRuntime().availableProcessors());
         ShopTest shopTest = new ShopTest();
         long start = System.nanoTime();
         //System.out.println(shopTest.findPrices("myPhone27S"));
@@ -51,7 +68,7 @@ public class ShopTest {
      */
     public List<String> findPricesAsync(String product) {
         List<CompletableFuture<String>> priceFutures = shops.stream()
-                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getName() + " price is " + shop.getPrice(product)))
+                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getName() + " price is " + shop.getPrice(product),executor))
                 .collect(Collectors.toList());
         return priceFutures.stream().map(CompletableFuture::join).collect(Collectors.toList());
     }

@@ -37,11 +37,7 @@ public class FutureTest {
         try {
             future.get(1, TimeUnit.SECONDS);
             System.out.println(333);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        } catch (TimeoutException e) {
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
             throw new RuntimeException(e);
         }
     }

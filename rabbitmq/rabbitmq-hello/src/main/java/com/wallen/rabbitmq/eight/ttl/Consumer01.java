@@ -1,4 +1,4 @@
-package com.wallen.rabbitmq.eight;
+package com.wallen.rabbitmq.eight.ttl;
 
 import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
@@ -30,7 +30,7 @@ public class Consumer01 {
 
         //声明死信队列
         channel.queueDeclare(DEAD_QUEUE, false, false, false, null);
-        //死信队列绑定死信交换机与routingkey
+        //死信队列绑定死信交换机与routing key
         channel.queueBind(DEAD_QUEUE, DEAD_EXCHANGE, "lisi");
 
         //正常队列绑定死信队列信息

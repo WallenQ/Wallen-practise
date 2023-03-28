@@ -102,6 +102,33 @@ public class TtlQueueConfig {
     }
 
     /**
+     * 声明队列C，并绑定到对应的死信交换机
+     *
+     * @return
+     */
+    @Bean("queueC")
+    public Queue queueC() {
+        Map<String, Object> args = new HashMap<>();
+        //声明当前队列绑定的死信交换机
+        args.put("x-dead-letter-exchange", Y_DEAD_LETTER_EXCHANGE);
+        //声明当前队列的死信路由
+        args.put("x-dead-letter-routing-key", "YD");
+        return QueueBuilder.durable(QUEUE_B).withArguments(args).build();
+    }
+
+    /**
+     * 声明队列C绑定X交换机
+     *
+     * @param queueC
+     * @param xExchange
+     * @return
+     */
+    @Bean
+    public Binding queuexBindingX(@Qualifier("queueC") Queue queueC, @Qualifier("xExchange") DirectExchange xExchange) {
+        return BindingBuilder.bind(queueC).to(xExchange).with("XC");
+    }
+
+    /**
      * 声明死信队列QD
      *
      * @return

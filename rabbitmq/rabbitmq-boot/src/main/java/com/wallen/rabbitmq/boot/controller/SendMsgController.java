@@ -27,4 +27,13 @@ public class SendMsgController {
         rabbitTemplate.convertAndSend("X", "XA", "消息来自TTL为10s的队列：" + message);
         rabbitTemplate.convertAndSend("X", "XB", "消息来自TTL为40s的队列：" + message);
     }
+
+    @GetMapping("sendExpirationMsg/{message}/{ttlTime}")
+    public void sendMsg(@PathVariable String message, @PathVariable String ttlTime) {
+        rabbitTemplate.convertAndSend("X", "XA", message, msg -> {
+            msg.getMessageProperties().setExpiration(ttlTime);
+            return msg;
+        });
+        log.info("当前时间：{}，发送一条时长{}ms消息给两个TTL队列：{}", new Date(), ttlTime, message);
+    }
 }

@@ -21,6 +21,7 @@ public class TtlQueueConfig {
     public static final String X_EXCHANGE = "X";
     public static final String QUEUE_A = "QA";
     public static final String QUEUE_B = "QB";
+    public static final String QUEUE_C = "QC";
 
     public static final String Y_DEAD_LETTER_EXCHANGE = "Y";
     public static final String DEAD_LETTER_QUEUE = "QD";
@@ -113,7 +114,7 @@ public class TtlQueueConfig {
         args.put("x-dead-letter-exchange", Y_DEAD_LETTER_EXCHANGE);
         //声明当前队列的死信路由
         args.put("x-dead-letter-routing-key", "YD");
-        return QueueBuilder.durable(QUEUE_B).withArguments(args).build();
+        return QueueBuilder.durable(QUEUE_C).withArguments(args).build();
     }
 
     /**
@@ -124,7 +125,7 @@ public class TtlQueueConfig {
      * @return
      */
     @Bean
-    public Binding queuexBindingX(@Qualifier("queueC") Queue queueC, @Qualifier("xExchange") DirectExchange xExchange) {
+    public Binding queueBindingX(@Qualifier("queueC") Queue queueC, @Qualifier("xExchange") DirectExchange xExchange) {
         return BindingBuilder.bind(queueC).to(xExchange).with("XC");
     }
 

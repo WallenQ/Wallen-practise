@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.UUID;
 
 /**
  * @author wallen
@@ -28,11 +29,12 @@ public class Producer {
     @PostConstruct
     public void init() {
         rabbitTemplate.setConfirmCallback(myCallBack);
+        rabbitTemplate.setReturnCallback(myCallBack);
     }
 
     @GetMapping("sendMessage/{message}")
     public void sendMessage(@PathVariable String message){
-        CorrelationData correlationData1 = new CorrelationData("1");
+        CorrelationData correlationData1 = new CorrelationData(UUID.randomUUID().toString());
         rabbitTemplate.convertAndSend(ConfirmConfig.CONFIRM_EXCHANGE_NAME,ConfirmConfig.CONFIRM_ROUTING_KEY,
                 message + ConfirmConfig.CONFIRM_ROUTING_KEY,correlationData1);
 

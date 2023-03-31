@@ -1,9 +1,6 @@
 package com.wallen.rabbitmq.nine;
 
-import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 import com.wallen.rabbitmq.utils.RabbitMQUtils;
 

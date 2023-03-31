@@ -1,10 +1,7 @@
 package com.wallen.rabbitmq.nine;
 
 import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 import com.wallen.rabbitmq.utils.RabbitMQUtils;
 
 import java.io.IOException;

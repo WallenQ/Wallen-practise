@@ -1,4 +1,4 @@
-package com.wallen.practise;
+package com.wallen.practise.book1;
 
 import org.springframework.stereotype.Component;
 

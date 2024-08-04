@@ -1,12 +1,9 @@
-package com.wallen.practise.calculator;
+package com.wallen.practise.book1.calculator;
 
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-
-import java.util.Collection;
 
 /**
  * @author Wallen
@@ -19,11 +16,11 @@ public class CalculatorApplication1 {
     }
 
     @Bean
-    public ApplicationRunner calculationRuner(Calculator calculator) {
+    public ApplicationRunner calculationRunner(Calculator calculator) {
         return args -> {
             calculator.calculator(137, 21, '+');
             calculator.calculator(137, 21, '*');
-            calculator.calculator(137, 21, '-');
+            //calculator.calculator(137, 21, '-');
         };
     }
 }

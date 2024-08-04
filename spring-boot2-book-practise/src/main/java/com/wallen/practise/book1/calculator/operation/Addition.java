@@ -1,6 +1,6 @@
-package com.wallen.practise.calculator.operation;
+package com.wallen.practise.book1.calculator.operation;
 
-import com.wallen.practise.calculator.Operation;
+import com.wallen.practise.book1.calculator.Operation;
 import org.springframework.stereotype.Component;
 
 /**

@@ -1,4 +1,4 @@
-package com.wallen.practise.calculator;
+package com.wallen.practise.book1.calculator;
 
 import java.util.Collection;
 

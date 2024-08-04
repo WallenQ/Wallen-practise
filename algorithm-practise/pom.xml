@@ -7,6 +7,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>algorithm-practise</name>
     <description>practise project</description>
+
+    <parent>
+        <groupId>com.wallen.practise</groupId>
+        <artifactId>wallen-parctise</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>

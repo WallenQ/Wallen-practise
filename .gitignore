@@ -32,6 +32,8 @@ rebel.xml
 jrebel-classpath-8348.jar
 *.bak
 .DS_Store
-/rabbitmq/rabbitmq-hello/.idea/
-/algorithm-practise/.idea/
 .idea/
+.mvn/
+mvnw
+*.cmd
+/springboot/springboot_05_mybatics/mvnw

@@ -3,6 +3,10 @@ package com.wallen.practise.book1;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
 
@@ -14,7 +18,7 @@ import java.util.Arrays;
 //@EnableAutoConfiguration
 //@ComponentScan
 @SpringBootApplication
-public class DemoApplication {
+public class DemoApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(DemoApplication.class,args);
 
@@ -24,5 +28,17 @@ public class DemoApplication {
         Arrays.sort(beanDefinitionNames);
         Arrays.asList(beanDefinitionNames).forEach(System.out::println);
 
+    }
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+        WebMvcConfigurer.super.configureAsyncSupport(configurer);
+    }
+
+    @Bean
+    public ThreadPoolTaskExecutor mvcTaskExecutor(){
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setThreadNamePrefix("wallen-mvc-task-");
+        return taskExecutor;
     }
 }

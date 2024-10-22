@@ -19,11 +19,50 @@ package com.wallen.practise.leetcode.array;
 public class SpiralMatrixII59 {
 
     public static void main(String[] args) {
-        System.out.println(generateMatrix(3));
+        int[][] result = generateMatrix(10);
+        for (int[] ints : result) {
+            for (int anInt : ints) {
+                if (anInt < 10) {
+                    System.out.print("00" + anInt + " ");
+                } else if (anInt < 100) {
+                    System.out.print("0" + anInt + " ");
+                } else {
+                    System.out.print(anInt + " ");
+                }
+            }
+            System.out.println();
+        }
     }
 
     public static int[][] generateMatrix(int n) {
+        int     count  = n;
+        int[][] result = new int[n][n];
+        int     xIndex = -1;
+        int     yIndex = 0;
+        int     value  = 0;
+        while (count > 0) {
+            for (int i = 0; i < count; i++) {
+                result[yIndex][xIndex + 1 + i] = ++value;
+            }
+            xIndex = xIndex + count;
 
-        return new int[3][3];
+            for (int j = 0; j < count - 1; j++) {
+                result[yIndex + 1 + j][xIndex] = ++value;
+            }
+            yIndex = yIndex + count - 1;
+            count--;
+
+            for (int i = 0; i < count; i++) {
+                result[yIndex][xIndex - 1 - i] = ++value;
+            }
+            xIndex = xIndex - count;
+
+            for (int j = 0; j < count - 1; j++) {
+                result[yIndex -1 - j][xIndex] = ++value;
+            }
+            yIndex = yIndex - count + 1;
+            count--;
+        }
+        return result;
     }
 }

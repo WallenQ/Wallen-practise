@@ -15,6 +15,7 @@
         <module>algorithm-practise</module>
         <module>spring-boot2-book-practise</module>
         <module>spring-test</module>
+        <module>spring6-test</module>
     </modules>
     <packaging>pom</packaging>
 </project>

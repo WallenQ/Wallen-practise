@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+        1.引入外部bean
+        1.创建两个类对象：dept和emp
+        2.在emp的bean标签里使用property引入dept的bean
+        -->
+    <bean id="dept" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Dept">
+        <property name="name" value="安保部门"/>
+    </bean>
+    <bean id="emp" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Emp">
+        <!-- 注入对象类型属性 -->
+        <property name="dept" ref="dept"/>
+        <!-- 普通属性注入 -->
+        <property name="name" value="lucy"/>
+        <property name="age" value="50"/>
+    </bean>
+
+    <!-- 2.内部bean注入 -->
+    <bean id="emp2" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Emp">
+        <!-- 内部bean -->
+        <property name="dept">
+            <bean id="dept2" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Dept">
+                <property name="name" value="财务部"/>
+            </bean>
+        </property>
+        <!-- 普通属性注入 -->
+        <property name="name" value="lucy"/>
+        <property name="age" value="50"/>
+    </bean>
+    <!-- 3.级联赋值-->
+    <bean id="dept3" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Dept">
+        <property name="name" value="技术研发部"/>
+    </bean>
+    <bean id="emp3" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Emp">
+        <!-- 普通属性注入 -->
+        <property name="name" value="lucy"/>
+        <property name="age" value="50"/>
+        <!-- 级联赋值 -->
+        <property name="dept" ref="dept3"/>
+        <property name="dept.name" value="测试部"/>
+    </bean>
+</beans>

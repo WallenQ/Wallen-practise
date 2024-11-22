@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        1.创建两个对象
+        2.注入普通类型属性
+        3.在学生bean注入map集合类型属性
+     -->
+    <bean id="student" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Student">
+        <property name="id" value="20"/>
+        <property name="name" value="Alice"/>
+        <property name="teacherMap">
+            <map>
+                <entry key="10010" value-ref="teacher1"/>
+                <entry key="10012" value-ref="teacher2"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="teacher1" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Teacher">
+        <property name="id" value="100"/>
+        <property name="name" value="李老师"/>
+    </bean>
+    <bean id="teacher2" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Teacher">
+        <property name="id" value="101"/>
+        <property name="name" value="张老师"/>
+    </bean>
+</beans>

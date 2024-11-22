@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1.set方法注入-->
+    <bean id="book" class="com.wallen.test.spring.spring6.ioc.xml.di.Book">
+        <property name="name" value="前端开发"/>
+        <property name="author" value="用户"/>
+        <property name="otherParameter1">
+            <null/>
+        </property>
+        <property name="otherParameter2" value="&lt;&gt;"/>
+        <property name="otherParameter3">
+            <value><![CDATA[a<b]]></value>
+        </property>
+    </bean>
+
+    <!-- 1.构造方法注入-->
+    <bean id="bookConstructor" class="com.wallen.test.spring.spring6.ioc.xml.di.Book">
+        <constructor-arg name="name" value="java"/>
+        <constructor-arg name="author" value="用户1"/>
+    </bean>
+</beans>

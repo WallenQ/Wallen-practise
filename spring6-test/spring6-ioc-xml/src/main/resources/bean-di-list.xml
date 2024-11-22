@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="emp5" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Emp">
+        <!-- 普通属性注入 -->
+        <property name="name" value="lucy"/>
+        <property name="age" value="20"/>
+    </bean>
+    <bean id="emp6" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Emp">
+        <!-- 普通属性注入 -->
+        <property name="name" value="mary"/>
+        <property name="age" value="20"/>
+    </bean>
+
+    <bean id="dept5" class="com.wallen.test.spring.spring6.ioc.xml.di.test.Dept">
+        <property name="name" value="技术部"/>
+        <property name="empList">
+            <list>
+                <ref bean="emp5"/>
+                <ref bean="emp6"/>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1.获取bean的演示 user对象创建 -->
+    <bean id="user" class="com.wallen.test.spring.spring6.ioc.xml.User"/>
+
+    <!-- 2.一个接口实现类获取过程 -->
+    <bean id="userDaoImpl" class="com.wallen.test.spring.spring6.ioc.xml.bean.UserDaoImpl"/>
+    <bean id="personDaoImpl" class="com.wallen.test.spring.spring6.ioc.xml.bean.PersonDaoImpl"/>
+</beans>

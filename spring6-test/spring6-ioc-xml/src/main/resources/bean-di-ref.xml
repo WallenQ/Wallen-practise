@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--p命名空间注入-->
+    <bean id="studentp" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Student"
+          p:id="100" p:name="mary" p:lessonList-ref="lessonList" p:teacherMap-ref="teacherMap"/>
+    <!--
+        1.创建三个对象
+        2.注入普通类型属性
+        3.使用util类型定义
+        4.在学生bean引用util类型定义bean，完成list、map类型属性注入
+    -->
+    <bean id="student" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Student">
+        <property name="id" value="10000"/>
+        <property name="name" value="Tom"/>
+        <!-- 注入list、map类型属性 -->
+        <property name="teacherMap" ref="teacherMap"/>
+        <property name="lessonList" ref="lessonList"/>
+    </bean>
+    <util:list id="lessonList">
+        <ref bean="lesson1"/>
+        <ref bean="lesson2"/>
+    </util:list>
+    <util:map id="teacherMap">
+        <entry key="10010" value-ref="teacher1"/>
+        <entry key="10011" value-ref="teacher2"/>
+    </util:map>
+    <bean id="lesson1" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Lesson">
+        <property name="lessonName" value="java开发"/>
+    </bean>
+    <bean id="lesson2" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Lesson">
+        <property name="lessonName" value="前端开发"/>
+    </bean>
+    <bean id="teacher1" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Teacher">
+        <property name="id" value="100"/>
+        <property name="name" value="1号老师"/>
+    </bean>
+    <bean id="teacher2" class="com.wallen.test.spring.spring6.ioc.xml.di.map.Teacher">
+        <property name="id" value="101"/>
+        <property name="name" value="2号老师"/>
+    </bean>
+
+</beans>

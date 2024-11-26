@@ -8,4 +8,11 @@ import com.wallen.test.spring6.ioc.annotation.Bean;
  */
 @Bean
 public class UserServiceImpl implements UserService {
+    //@Di
+    //private UserDao userDao;
+
+    @Override
+    public void add() {
+        System.out.println("service add......");
+    }
 }

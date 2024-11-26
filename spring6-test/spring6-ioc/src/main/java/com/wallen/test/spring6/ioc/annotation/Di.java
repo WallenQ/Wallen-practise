@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * @author Wallen
  * @date 2024/11/22 14:29
  */
-@Target(ElementType.TYPE)
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Di {
 }

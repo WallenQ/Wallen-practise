@@ -5,4 +5,5 @@ package com.wallen.test.spring6.ioc.dao;
  * @date 2024/11/22 14:27
  */
 public interface UserDao {
+    void add();
 }

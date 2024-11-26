@@ -1,6 +1,8 @@
 package com.wallen.test.spring6.ioc.service;
 
 import com.wallen.test.spring6.ioc.annotation.Bean;
+import com.wallen.test.spring6.ioc.annotation.Di;
+import com.wallen.test.spring6.ioc.dao.UserDao;
 
 /**
  * @author Wallen
@@ -8,11 +10,12 @@ import com.wallen.test.spring6.ioc.annotation.Bean;
  */
 @Bean
 public class UserServiceImpl implements UserService {
-    //@Di
-    //private UserDao userDao;
+    @Di
+    private UserDao userDao;
 
     @Override
     public void add() {
         System.out.println("service add......");
+        userDao.add();
     }
 }

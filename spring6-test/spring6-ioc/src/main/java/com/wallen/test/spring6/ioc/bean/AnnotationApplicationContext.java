@@ -1,14 +1,17 @@
 package com.wallen.test.spring6.ioc.bean;
 
 import com.wallen.test.spring6.ioc.annotation.Bean;
+import com.wallen.test.spring6.ioc.annotation.Di;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Wallen
@@ -45,6 +48,45 @@ public class AnnotationApplicationContext implements ApplicationContext {
             rootPath = filePath.substring(0, filePath.length() - packagePath.length());
             //包扫描
             loadBean(new File(filePath));
+        }
+
+        //属性注入
+        loadDi();
+    }
+
+    /**
+     * 属性注入
+     */
+    private void loadDi() {
+        //实例化对象在beanFactory的map集合里面
+        //1.遍历beanFactory的map集合
+        Set<Map.Entry<Class, Object>> entries = beanFactory.entrySet();
+        for (Map.Entry<Class, Object> entry : entries) {
+            //2.获取map集合每个对象（value），每个对象获取属性
+            Object obj = entry.getValue();
+
+            //获取对象Class
+            Class<?> clazz = obj.getClass();
+
+            //每个对象获取属性
+            Field[] declaredFields = clazz.getDeclaredFields();
+
+            //3.遍历得到每个对象属性数组，得到每个属性
+            for (Field field : declaredFields) {
+                //4.判断属性上是否有@Di注解
+                Di annotation = field.getAnnotation(Di.class);
+                if (annotation != null) {
+                    //如果私有属性，设置可设置值
+                    field.setAccessible(true);
+
+                    //5.如果有@Di注解，把对象进行设置（注入）
+                    try {
+                        field.set(obj, beanFactory.get(field.getType()));
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
         }
     }
 

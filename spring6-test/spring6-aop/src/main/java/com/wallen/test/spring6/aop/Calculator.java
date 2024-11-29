@@ -1,4 +1,4 @@
-package com.wallen.test.spring6.aop.example;
+package com.wallen.test.spring6.aop;
 
 /**
  * @author Wallen

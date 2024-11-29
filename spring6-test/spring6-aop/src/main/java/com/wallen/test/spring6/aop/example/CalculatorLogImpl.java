@@ -1,5 +1,7 @@
 package com.wallen.test.spring6.aop.example;
 
+import com.wallen.test.spring6.aop.Calculator;
+
 /**
  * @author Wallen
  * @date 2024/11/26 19:27

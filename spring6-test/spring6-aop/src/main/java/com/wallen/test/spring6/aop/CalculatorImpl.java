@@ -1,9 +1,12 @@
-package com.wallen.test.spring6.aop.example;
+package com.wallen.test.spring6.aop;
+
+import org.springframework.stereotype.Component;
 
 /**
  * @author Wallen
  * @date 2024/11/26 19:27
  */
+@Component
 public class CalculatorImpl implements Calculator {
     @Override
     public int add(int i, int j) {

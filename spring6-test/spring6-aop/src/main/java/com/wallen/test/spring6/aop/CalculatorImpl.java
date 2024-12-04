@@ -12,6 +12,7 @@ public class CalculatorImpl implements Calculator {
     public int add(int i, int j) {
         int result = i + j;
         System.out.println("方法内部 result = " + result);
+        //int a = 1 / 0;
         return result;
     }
 

@@ -40,7 +40,7 @@ public class LogAspect {
     }
 
     // 返回
-    @AfterReturning(value = "execution(public int com.wallen.test.spring6.aop.CalculatorImpl.*(..))", returning = "result")
+    @AfterReturning(value = "com.wallen.test.spring6.aop.annotation.Aspect.pointCut()", returning = "result")
     public void afterReturning(JoinPoint joinPoint, Object result) {
         String name = joinPoint.getSignature().getName();
         System.out.println("Logger-->返回通知，方法名称：" + name + "，返回结果" + result);

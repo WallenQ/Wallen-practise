@@ -16,6 +16,7 @@
         <module>spring6-reflect</module>
         <module>spring-first</module>
         <module>spring6-junit</module>
+        <module>spring6-jdbc-tx</module>
     </modules>
 
     <properties>

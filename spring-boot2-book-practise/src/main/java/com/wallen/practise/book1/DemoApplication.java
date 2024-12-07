@@ -17,7 +17,7 @@ import java.util.Arrays;
 //@Configuration
 //@EnableAutoConfiguration
 //@ComponentScan
-@SpringBootApplication
+//@SpringBootApplication
 public class DemoApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(DemoApplication.class,args);

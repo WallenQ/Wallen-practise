@@ -1,4 +1,4 @@
-package com.wallen.practise.spring6.jdbc.tx.po;
+package com.wallen.practise.spring6.jdbc.po;
 
 import lombok.Data;
 

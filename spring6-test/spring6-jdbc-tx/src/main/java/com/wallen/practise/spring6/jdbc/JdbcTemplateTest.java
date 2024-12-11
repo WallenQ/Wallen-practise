@@ -1,6 +1,6 @@
-package com.wallen.practise.spring6.jdbc.tx;
+package com.wallen.practise.spring6.jdbc;
 
-import com.wallen.practise.spring6.jdbc.tx.po.Emp;
+import com.wallen.practise.spring6.jdbc.po.Emp;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

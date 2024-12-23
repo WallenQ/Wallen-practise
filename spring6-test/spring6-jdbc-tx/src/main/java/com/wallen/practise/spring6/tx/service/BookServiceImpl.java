@@ -3,6 +3,7 @@ package com.wallen.practise.spring6.tx.service;
 import com.wallen.practise.spring6.tx.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -14,7 +15,7 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookDao bookDao;
 
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public void buyBook(Integer bookId, Integer userId) {
         //查询图书价格

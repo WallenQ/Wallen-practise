@@ -18,4 +18,10 @@ public class TestBookController {
     public void testBuyBook() {
         bookController.buyBook(1, 1);
     }
+
+    @Test
+    public void checkout(){
+        Integer[] bookIds = {1,2};
+        bookController.checkout(bookIds,1);
+    }
 }

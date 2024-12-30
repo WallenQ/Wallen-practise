@@ -1,4 +1,4 @@
-package com.wallen.practise.spring6.tx.config;
+package com.wallen.practise.spring6.tx.annotation.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +16,9 @@ import javax.sql.DataSource;
  * @author Wallen
  * @date 2024/12/30 11:17
  */
-@Configuration
-@ComponentScan("com.wallen.practise.spring6")
-@EnableTransactionManagement
+//@Configuration
+//@ComponentScan("com.wallen.practise.spring6")
+//@EnableTransactionManagement
 public class SpringConfig {
     @Bean
     public DataSource getDataSource() {

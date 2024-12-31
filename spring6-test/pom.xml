@@ -17,6 +17,7 @@
         <module>spring-first</module>
         <module>spring6-junit</module>
         <module>spring6-jdbc-tx</module>
+        <module>spring6-resources</module>
     </modules>
 
     <properties>

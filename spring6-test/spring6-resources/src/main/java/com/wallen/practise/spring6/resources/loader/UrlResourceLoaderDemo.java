@@ -1,4 +1,4 @@
-package com.wallen.practise.spring6.resources;
+package com.wallen.practise.spring6.resources.loader;
 
 import org.springframework.core.io.UrlResource;
 

@@ -1,4 +1,4 @@
-package com.wallen.practise.spring6.resources;
+package com.wallen.practise.spring6.resources.loader.aware;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

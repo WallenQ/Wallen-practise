@@ -3,13 +3,12 @@ package com.wallen.practise.spring6.resources;
 import org.springframework.core.io.UrlResource;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 /**
  * @author Wallen
  * @date 2024/12/31 17:46
  */
-public class UrlResourceDemo {
+public class UrlResourceLoaderDemo {
     public static void main(String[] args) {
         //访问网络资源
         loadAndReadUrlResource("http://www.baidu.com");

@@ -10,7 +10,7 @@
 
     <parent>
         <groupId>com.wallen.practise</groupId>
-        <artifactId>wallen-parctise</artifactId>
+        <artifactId>wallen-practise</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

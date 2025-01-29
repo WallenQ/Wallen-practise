@@ -1,5 +1,6 @@
 package com.wallen.practise.leetcode.array;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ import java.util.List;
  * n == matrix[i].length
  * 1 <= m, n <= 10
  * -100 <= matrix[i][j] <= 100
+ * <p>
+ * https://leetcode.cn/problems/spiral-matrix/description/
  *
  * @author Wallen
  * @date 2024/10/22 17:44
@@ -20,7 +23,11 @@ import java.util.List;
 public class SpiralMatrix54 {
 
     public static void main(String[] args) {
-
+        int[][]       matrix = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        List<Integer> result = spiralOrder(matrix);
+        if (result != null) {
+            System.out.println(Arrays.toString(result.toArray()));
+        }
     }
 
     public static List<Integer> spiralOrder(int[][] matrix) {

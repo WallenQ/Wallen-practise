@@ -17,6 +17,6 @@ public class EchoHandler extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         String msg = message.getPayload();
-        session.sendMessage(new TextMessage("RECEIVED:" + msg));
+        session.sendMessage(new TextMessage("RECEIVED: " + msg));
     }
 }

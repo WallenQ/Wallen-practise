@@ -12,8 +12,8 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
  * @author Wallen
  * @date 2024/12/7 17:45
  */
-@SpringBootApplication
-@EnableWebSocket
+//@SpringBootApplication
+//@EnableWebSocket
 public class EchoApplication implements WebSocketConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(EchoApplication.class, args);

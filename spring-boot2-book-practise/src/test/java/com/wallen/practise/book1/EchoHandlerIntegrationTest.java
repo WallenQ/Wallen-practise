@@ -30,6 +30,6 @@ public class EchoHandlerIntegrationTest {
         container.connectToServer(testClient, uri);
         testClient.sendTextAndWait("Hello World!", 200);
         testClient.closeAndWait(2);
-        assertThat(testClient.getReceived()).containsExactly("CONNECTION ESTABLISHED", "RECEIVED:Hello World!");
+        assertThat(testClient.getReceived()).containsExactly("CONNECTION ESTABLISHED", "RECEIVED: Hello World!");
     }
 }

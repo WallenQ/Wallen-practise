@@ -7,7 +7,7 @@ function setConnected(connected) {
     document.getElementById('echo').disable = !connected;
 }
 
-function conncet() {
+/*function connect() {
     ws = new WebSocket(url);
 
     ws.onopen = function () {
@@ -22,9 +22,21 @@ function conncet() {
         setConnected(false);
         log('Info: Closing Connection.');
     }
+}*/
+
+function connect() {
+    ws = webstomp.client(url, {protocols: ['v11.stomp', 'v12.stomp']});
+
+    ws.connect({}, function (frame) {
+        setConnected(true);
+        log(frame);
+        ws.subscribe('/topic/echo', function (message) {
+            log(message.body);
+        })
+    });
 }
 
-function disconncet() {
+function disconnect() {
     if (ws != null) {
         ws.close();
         ws = null;

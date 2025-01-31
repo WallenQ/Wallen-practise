@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Wallen
  * @date 2024/9/17 14:16
  */
-@RestController
+//@RestController
 public class HelloWorldController {
     @GetMapping("/helloWorld")
     public String helloWorld() {

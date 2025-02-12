@@ -1,5 +1,6 @@
 package com.wallen.practise;
 
+import com.wallen.practise.spring.test.bean.OtherBean;
 import com.wallen.practise.spring.test.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,7 +15,9 @@ public class ApplicationContextTest {
         //UserService        userService = applicationContext.getBean("userService", UserService.class);
         //System.out.println(userService);
         //applicationContext.close();
-        UserService        userService = applicationContext.getBean("userService3", UserService.class);
-        System.out.println(userService);
+        //UserService        userService = applicationContext.getBean("userService3", UserService.class);
+        //System.out.println(userService);
+        OtherBean bean = applicationContext.getBean(OtherBean.class);
+        System.out.println(bean);
     }
 }

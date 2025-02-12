@@ -18,4 +18,6 @@
     </bean>
 
     <bean id="userDao" class="com.wallen.practise.spring.test.dao.impl.UserDaoImpl"/>
+    <bean id="myComponentBeanFactoryPostProcessor" class="com.wallen.practise.spring.test.processor.MyComponentBeanFactoryPostProcessor"/>
+    <bean id="myBeanPostProcessor" class="com.wallen.practise.spring.test.processor.MyBeanPostProcessor"/>
 </beans>

@@ -37,3 +37,4 @@ jrebel-classpath-8348.jar
 mvnw
 *.cmd
 /springboot/springboot_05_mybatics/mvnw
+/spring-test/base/target/

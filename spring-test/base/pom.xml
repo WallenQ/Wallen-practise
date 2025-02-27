@@ -5,15 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.wallen.practise</groupId>
-        <artifactId>wallen-practise</artifactId>
+        <artifactId>spring-test</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-test</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>base</module>
-    </modules>
+    <artifactId>base</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -21,11 +17,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>6.1.13</version>
-        </dependency>
-    </dependencies>
 </project>

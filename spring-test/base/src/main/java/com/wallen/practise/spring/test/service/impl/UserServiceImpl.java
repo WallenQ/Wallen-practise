@@ -1,9 +1,9 @@
 package com.wallen.practise.spring.test.service.impl;
 
 import com.wallen.practise.spring.test.dao.UserDao;
+import com.wallen.practise.spring.test.mapper.UserMapper;
 import com.wallen.practise.spring.test.service.UserService;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Service;
 
 /**
  * @author Wallen
@@ -11,6 +11,16 @@ import org.springframework.stereotype.Service;
  */
 //@Service
 public class UserServiceImpl implements UserService , InitializingBean {
+
+    private UserMapper userMapper;
+
+    public void setUserMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
+    public void findAll() {
+        System.out.println(userMapper.findAll());
+    }
 
     public UserServiceImpl() {
         System.out.println("UserServiceImpl初始化");

@@ -1,4 +1,4 @@
-package com.wallen.practise.leetcode.array;
+package com.wallen.practise.leetcode.array.binarySearch;
 
 /**
  * 有效的完全平方数

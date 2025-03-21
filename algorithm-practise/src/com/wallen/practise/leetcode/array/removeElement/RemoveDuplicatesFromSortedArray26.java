@@ -1,4 +1,4 @@
-package com.wallen.practise.leetcode.array;
+package com.wallen.practise.leetcode.array.removeElement;
 
 /**
  * 删除有序数组中的重复项

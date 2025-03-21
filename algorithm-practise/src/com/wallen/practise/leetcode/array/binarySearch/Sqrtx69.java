@@ -1,4 +1,4 @@
-package com.wallen.practise.leetcode.array;
+package com.wallen.practise.leetcode.array.binarySearch;
 
 /**
  * 69. x 的平方根

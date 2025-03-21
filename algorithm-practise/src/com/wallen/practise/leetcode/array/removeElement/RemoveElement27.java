@@ -1,4 +1,4 @@
-package com.wallen.practise.leetcode.array;
+package com.wallen.practise.leetcode.array.removeElement;
 
 /**
  * 移除元素

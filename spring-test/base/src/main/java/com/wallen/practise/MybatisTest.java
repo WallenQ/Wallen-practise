@@ -13,6 +13,7 @@ import java.io.InputStream;
  */
 public class MybatisTest {
     public static void main(String[] args) throws Exception {
+        //MyBatis原始操作代码
         InputStream in         = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSession  sqlSession = new SqlSessionFactoryBuilder().build(in).openSession();
         UserMapper  userMapper = sqlSession.getMapper(UserMapper.class);

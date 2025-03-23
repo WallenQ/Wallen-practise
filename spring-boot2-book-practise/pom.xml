@@ -7,6 +7,10 @@
     <groupId>com.wallen</groupId>
     <artifactId>spring-boot2-book-practise</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>book1-base</module>
+    </modules>
 
     <parent>
         <groupId>com.wallen.practise</groupId>

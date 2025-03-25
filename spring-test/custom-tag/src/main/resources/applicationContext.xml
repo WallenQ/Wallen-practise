@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:haohao="http://www.itheima.com/haohao"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.itheima.com/haohao
+       http://www.itheima.com/haohao/haohao-annotation.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--使用自定义命名空间标签-->
+    <haohao:annotation-driven></haohao:annotation-driven>
+
+    <bean id="testService" class="com.wallen.practise.customTag.service.TestService"/>
+</beans>

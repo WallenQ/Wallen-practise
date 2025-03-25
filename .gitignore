@@ -38,3 +38,4 @@ mvnw
 *.cmd
 /springboot/springboot_05_mybatics/mvnw
 /spring-test/base/target/
+/spring-test/custom-tag/target/

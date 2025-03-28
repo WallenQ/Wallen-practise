@@ -1,4 +1,4 @@
-package com.wallen.practise.leetcode.array;
+package com.wallen.practise.leetcode.array.minimumSizeSubarray;
 
 /**
  * 长度最小的子数组

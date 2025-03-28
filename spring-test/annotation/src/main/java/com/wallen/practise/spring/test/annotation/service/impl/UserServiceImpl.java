@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
  * @author Wallen
  * @date 2025/3/26 17:58
  */
-@Component
-@Scope("singleton")
-@Lazy
+//@Component
+//@Scope("singleton")
+//@Lazy
 public class UserServiceImpl implements UserService {
     public UserServiceImpl() {
         System.out.println("UserServiceImpl create...");

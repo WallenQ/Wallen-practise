@@ -2,6 +2,7 @@ package com.wallen.practise.spring.test.annotation;
 
 import com.wallen.practise.spring.test.annotation.config.SpringConfig;
 import com.wallen.practise.spring.test.annotation.service.UserService;
+import com.wallen.practise.spring.test.annotation.service.impl.UserServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -20,7 +21,8 @@ public class ApplicationContextTest {
 
         //注解方式创建容器
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
-        UserService        userService1       = applicationContext.getBean(UserService.class);
+        UserService        userService1       = applicationContext.getBean(UserServiceImpl.class);
         System.out.println(userService1);
+        userService1.show();
     }
 }

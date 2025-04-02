@@ -40,3 +40,4 @@ mvnw
 /spring-test/base/target/
 /spring-test/custom-tag/target/
 /spring-test/annotation/target/
+/spring-test/spring-test-aop/target/

@@ -1,14 +1,11 @@
 package com.wallen.practise.spring.test.aop;
 
 import com.wallen.practise.spring.test.aop.advice.MyAdvice;
-import com.wallen.practise.spring.test.aop.service.UserService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
@@ -27,8 +24,8 @@ public class MockAopBeanPostProcessor implements BeanPostProcessor, ApplicationC
             //生成当前Bean的Proxy对象
             return Proxy.newProxyInstance(bean.getClass().getClassLoader(), bean.getClass().getInterfaces(),
                     (proxy, method, args) -> {
-                        //执行增强对象的before方法
                         MyAdvice myAdvice = applicationContext.getBean(MyAdvice.class);
+                        //执行增强对象的before方法
                         myAdvice.beforeAdvice();
                         //执行目标对象的目标方法
                         Object result = method.invoke(bean, args);

@@ -15,5 +15,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void show2() {
         System.out.println("show2...");
+         int i = 1/0;
     }
 }

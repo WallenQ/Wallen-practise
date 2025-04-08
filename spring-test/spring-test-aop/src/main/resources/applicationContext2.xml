@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--配置目标类-->
+    <bean id="userService" class="com.wallen.practise.spring.test.aop.service.impl.UserServiceImpl"/>
+    <!--配置通知类-->
+    <bean id="myAdvice" class="com.wallen.practise.spring.test.aop.advice.MyAdvice2"/>
+    <!--<bean id="mockAopBeanPostProcessor" class="com.wallen.practise.spring.test.aop.MockAopBeanPostProcessor"/>-->
+
+    <!--aop配置-->
+    <aop:config>
+        <!--配置切点表达式，目的是指定哪些方法被增强-->
+        <aop:pointcut id="myPointcut2" expression="execution(* com.wallen.practise.spring.test.aop.service.impl.*.*())"/>
+        <!--配置织入，目的是要执行哪些切点与哪些通知进行结合-->
+        <aop:advisor advice-ref="myAdvice" pointcut-ref="myPointcut2"/>
+    </aop:config>
+</beans>

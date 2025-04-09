@@ -1,6 +1,6 @@
-package com.wallen.practise.spring.test.aop;
+package com.wallen.practise.spring.test.aop.xml;
 
-import com.wallen.practise.spring.test.aop.service.UserService;
+import com.wallen.practise.spring.test.aop.xml.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

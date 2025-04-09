@@ -1,4 +1,4 @@
-package com.wallen.practise.spring.test.aop.test;
+package com.wallen.practise.spring.test.aop.xml.test;
 
 /**
  * @author Wallen

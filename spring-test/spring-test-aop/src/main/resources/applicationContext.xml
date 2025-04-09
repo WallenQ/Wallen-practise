@@ -11,15 +11,15 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--配置目标类-->
-    <bean id="userService" class="com.wallen.practise.spring.test.aop.service.impl.UserServiceImpl"/>
+    <bean id="userService" class="com.wallen.practise.spring.test.aop.xml.service.impl.UserServiceImpl"/>
     <!--配置通知类-->
-    <bean id="myAdvice" class="com.wallen.practise.spring.test.aop.advice.MyAdvice"/>
-    <!--<bean id="mockAopBeanPostProcessor" class="com.wallen.practise.spring.test.aop.MockAopBeanPostProcessor"/>-->
+    <bean id="myAdvice" class="com.wallen.practise.spring.test.aop.xml.advice.MyAdvice"/>
+    <!--<bean id="mockAopBeanPostProcessor" class="com.wallen.practise.spring.test.aop.xml.MockAopBeanPostProcessor"/>-->
 
     <!--aop配置-->
     <aop:config>
         <!--配置切点表达式，目的是指定哪些方法被增强-->
-        <aop:pointcut id="myPointcut" expression="execution(* com.wallen.practise.spring.test.aop.service.impl.*.*())"/>
+        <aop:pointcut id="myPointcut" expression="execution(* com.wallen.practise.spring.test.aop.xml.service.impl.*.*())"/>
         <!--配置织入，目的是要执行哪些切点与哪些通知进行结合-->
         <aop:aspect ref="myAdvice">
             <!--前置通知-->

@@ -1,6 +1,6 @@
-package com.wallen.practise.spring.test.aop;
+package com.wallen.practise.spring.test.aop.xml;
 
-import com.wallen.practise.spring.test.aop.advice.MyAdvice;
+import com.wallen.practise.spring.test.aop.xml.advice.MyAdvice;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;

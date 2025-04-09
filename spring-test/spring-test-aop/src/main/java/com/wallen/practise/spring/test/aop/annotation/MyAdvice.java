@@ -1,12 +1,18 @@
-package com.wallen.practise.spring.test.aop.advice;
+package com.wallen.practise.spring.test.aop.annotation;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Wallen
  * @date 2025/4/2 11:35
  */
+@Component
+@Aspect
 public class MyAdvice {
+    @Before("execution(* com.wallen.practise.spring.test.aop.annotation.service.*.*(..))")
     public void beforeAdvice() {
         System.out.println("before advice...");
     }

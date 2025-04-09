@@ -1,4 +1,4 @@
-package com.wallen.practise.spring.test.aop.service;
+package com.wallen.practise.spring.test.aop.annotation.service;
 
 /**
  * @author Wallen

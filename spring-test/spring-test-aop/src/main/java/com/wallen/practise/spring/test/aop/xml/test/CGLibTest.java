@@ -1,4 +1,4 @@
-package com.wallen.practise.spring.test.aop.test;
+package com.wallen.practise.spring.test.aop.xml.test;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;

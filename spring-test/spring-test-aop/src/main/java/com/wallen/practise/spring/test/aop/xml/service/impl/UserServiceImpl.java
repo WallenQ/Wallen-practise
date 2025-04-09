@@ -1,6 +1,6 @@
-package com.wallen.practise.spring.test.aop.service.impl;
+package com.wallen.practise.spring.test.aop.xml.service.impl;
 
-import com.wallen.practise.spring.test.aop.service.UserService;
+import com.wallen.practise.spring.test.aop.xml.service.UserService;
 
 /**
  * @author Wallen

@@ -14,5 +14,6 @@ public class ApplicationContextTest {
         ApplicationContext context2     = new ClassPathXmlApplicationContext("applicationContext3.xml");
         UserService        userService2 = context2.getBean(UserService.class);
         userService2.show1();
+        //userService2.show2();
     }
 }

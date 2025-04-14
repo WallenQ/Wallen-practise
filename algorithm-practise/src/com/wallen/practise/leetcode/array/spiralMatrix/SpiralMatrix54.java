@@ -1,4 +1,4 @@
-package com.wallen.practise.leetcode.array;
+package com.wallen.practise.leetcode.array.spiralMatrix;
 
 import java.util.Arrays;
 import java.util.List;

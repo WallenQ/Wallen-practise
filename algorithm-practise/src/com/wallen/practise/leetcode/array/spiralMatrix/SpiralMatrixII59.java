@@ -1,4 +1,4 @@
-package com.wallen.practise.leetcode.array;
+package com.wallen.practise.leetcode.array.spiralMatrix;
 
 /**
  * 59. 螺旋矩阵 II

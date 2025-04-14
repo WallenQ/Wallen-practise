@@ -16,6 +16,7 @@
         <module>custom-tag</module>
         <module>annotation</module>
         <module>spring-test-aop</module>
+        <module>transaction</module>
     </modules>
 
     <properties>

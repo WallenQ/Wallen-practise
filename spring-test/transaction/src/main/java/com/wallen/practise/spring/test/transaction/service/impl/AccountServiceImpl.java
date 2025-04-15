@@ -17,6 +17,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void transferMoney(String outAccount, String inAccount, Integer money) {
         accountMapper.decreaseMoney(outAccount, money);
+        int i = 1/0;
         accountMapper.increaseMoney(inAccount, money);
     }
 }

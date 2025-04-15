@@ -63,5 +63,10 @@
             <artifactId>mybatis</artifactId>
             <version>3.5.13</version> <!-- 使用最新稳定版 -->
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.22</version>
+        </dependency>
     </dependencies>
 </project>

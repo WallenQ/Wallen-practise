@@ -24,9 +24,22 @@ public class LengthOfLastWord58 {
         System.out.println(lengthOfLastWord58.lengthOfLastWord("Hello World"));
         System.out.println(lengthOfLastWord58.lengthOfLastWord("   fly me   to   the moon  "));
         System.out.println(lengthOfLastWord58.lengthOfLastWord("luffy is still joyboy"));
+        System.out.println(lengthOfLastWord58.lengthOfLastWord("a"));
     }
 
     public int lengthOfLastWord(String s) {
-        return 0;
+        int length  = s.length();
+        int current = 0;
+        for (int i = length - 1; i >= 0; i--) {
+            char c = s.charAt(i);
+            if (Character.isSpaceChar(c)) {
+                if (current > 0) {
+                    return current;
+                }
+            } else {
+                current++;
+            }
+        }
+        return Math.max(current, 0);
     }
 }

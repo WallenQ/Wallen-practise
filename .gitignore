@@ -42,3 +42,4 @@ mvnw
 /spring-test/annotation/target/
 /spring-test/spring-test-aop/target/
 /spring-test/transaction/target/
+/spring-test/webmvc-test02/target/

@@ -1,5 +1,7 @@
 package com.wallen.practise.spring.test.webmvc.controller;
 
+import com.wallen.practise.spring.test.webmvc.service.QuickService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class QuickController {
+    @Autowired
+    private QuickService quickService;
+
     @RequestMapping("/show")
-    public String  show() {
-        System.out.println("show running...");
+    public String show() {
+        System.out.println("show running... : " + quickService);
         return "/index.jsp";
     }
 }

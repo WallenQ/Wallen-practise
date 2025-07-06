@@ -8,6 +8,7 @@ import reactor.core.publisher.Mono;
 
 import javax.annotation.PostConstruct;
 import java.time.Duration;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -38,5 +39,9 @@ public class OrderService {
 
     public Flux<Order> orders() {
         return Flux.fromIterable(orders.values()).delayElements(Duration.ofMillis(128));
+    }
+
+    public List<Order> getAll() {
+        return orders.values().stream().toList();
     }
 }

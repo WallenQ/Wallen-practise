@@ -1,5 +1,6 @@
 var ws = null;
 var url = "ws://localhost:8080/echo";
+//var url = "ws://echo.websocket.org";
 
 function setConnected(connected) {
     document.getElementById('connect').disabled = connected;
@@ -7,12 +8,13 @@ function setConnected(connected) {
     document.getElementById('echo').disabled = !connected;
 }
 
-/*function connect() {
+function connect() {
     ws = new WebSocket(url);
+    console.log(111)
 
     ws.onopen = function () {
         setConnected(true);
-    };
+    }
 
     ws.onmessage = function (event) {
         log(event.data);
@@ -20,20 +22,18 @@ function setConnected(connected) {
 
     ws.onclose = function (event) {
         setConnected(false);
-        log('Info: Closing Connection.');
+        log('Info: Closing Connection.')
     }
-}*/
 
-function connect() {
-    ws = webstomp.client(url, {protocols: ['v11.stomp', 'v12.stomp']});
-
-    ws.connect({}, function (frame) {
-        setConnected(true);
-        log(frame);
-        ws.subscribe('/topic/echo', function (message) {
-            log(message.body);
-        })
-    });
+    ws.onerror = function (error) {
+        if ("WebSocket" in window) {
+            console.log("WebSocket is supported by your browser!");
+        } else {
+            console.error("WebSocket is NOT supported by your browser!");
+        }
+        log('Error: ' + error);
+        console.error('WebSocket Error:', error);
+    }
 }
 
 function disconnect() {

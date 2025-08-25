@@ -33,6 +33,6 @@ public class MyComponentBeanFactoryPostProcessor implements BeanDefinitionRegist
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        BeanDefinitionRegistryPostProcessor.super.postProcessBeanFactory(beanFactory);
+        //BeanDefinitionRegistryPostProcessor.super.postProcessBeanFactory(beanFactory);
     }
 }

@@ -11,6 +11,7 @@
     <modules>
         <module>book1-base</module>
         <module>book1-WebFlux</module>
+        <module>boo1-security</module>
     </modules>
 
     <parent>

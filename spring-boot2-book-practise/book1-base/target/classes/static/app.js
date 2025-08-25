@@ -2,9 +2,9 @@ var ws = null;
 var url = "ws://localhost:8080/echo";
 
 function setConnected(connected) {
-    document.getElementById('connect').disable = connected;
-    document.getElementById('disconnect').disable = !connected;
-    document.getElementById('echo').disable = !connected;
+    document.getElementById('connect').disabled = connected;
+    document.getElementById('disconnect').disabled = !connected;
+    document.getElementById('echo').disabled = !connected;
 }
 
 /*function connect() {

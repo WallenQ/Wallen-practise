@@ -44,3 +44,5 @@ mvnw
 /spring-test/transaction/target/
 /spring-test/webmvc-test02/target/
 /spring-boot2-book-practise/book1-WebFlux/target/
+/spring-boot2-book-practise/book1-base/target/
+/spring-boot2-book-practise/boo1-security/target/

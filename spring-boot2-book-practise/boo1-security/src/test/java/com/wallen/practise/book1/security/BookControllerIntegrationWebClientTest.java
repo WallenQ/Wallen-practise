@@ -34,7 +34,8 @@ public class BookControllerIntegrationWebClientTest {
                 .thenReturn(Arrays.asList(new Book("123", "Spring 5 Recipes", "Marten Deinum", "Josh Long"),
                         new Book("321", "Pro Spring MVC", "Marten Deinum", "Colin Yates")));
 
-        webTestClient.get().uri("/books").headers(headers -> headers.setBasicAuth("user", "s3cr3t"))
+        webTestClient.get().uri("/books")
+                .headers(headers -> headers.setBasicAuth("user", "s3cr3t"))
                 .exchange().expectStatus().isOk().expectBodyList(Book.class).hasSize(2);
     }
 }

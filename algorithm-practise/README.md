@@ -19,4 +19,8 @@
 对应题目：~~44[[WildcardMatching44.java](src/com/wallen/practise/kamacoder/array/WildcardMatching44.java)]~~
 
 ## 1.6、螺旋矩阵II
-对应题目：~~59~~，~~54~~，29
+对应题目：~~59~~，~~54(LCR 146)~~
+
+# 2、链表
+## 2.2 链表：移除链表元素
+对应题目：203

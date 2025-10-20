@@ -22,8 +22,57 @@ import com.wallen.practise.leetcode.ListNode;
  * @Date 2025/10/10 16:14
  */
 public class RemoveLinkedListElements203 {
-    public ListNode removeElements(ListNode head, int val) {
+    public static void main(String[] args) {
+        ListNode l7 = new ListNode(6);
+        ListNode l6 = new ListNode(5, l7);
+        ListNode l5 = new ListNode(4, l6);
+        ListNode l4 = new ListNode(3, l5);
+        ListNode l3 = new ListNode(6, l4);
+        ListNode l2 = new ListNode(2, l3);
+        ListNode l1 = new ListNode(1, l2);
 
-        return null;
+        ListNode result = removeElements1(l1, 6);
+
+        while (result != null) {
+            System.out.println(result.val);
+            result = result.next;
+        }
     }
+
+    public static ListNode removeElements(ListNode head, int val) {
+        ListNode result = null;
+        ListNode pre = null;
+
+        while (head != null) {
+            if (head.val != val) {
+                if (result == null) {
+                    result = head;
+                }
+                pre = head;
+            } else {
+                if (pre != null) {
+                    pre.next = head.next;
+                }
+            }
+            head = head.next;
+        }
+
+        return result;
+    }
+
+    /**
+     * 递归
+     *
+     * @param head
+     * @param val
+     * @return
+     */
+    public static ListNode removeElements1(ListNode head, int val) {
+        if (head == null) {
+            return head;
+        }
+        head.next = removeElements1(head.next, val);
+        return head.val == val ? head.next : head;
+    }
+
 }

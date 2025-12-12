@@ -47,6 +47,15 @@ package com.wallen.practise.leetcode.linked;
  * @Date 2025/10/20 13:34
  */
 public class MyLinkedList707 {
+    public static void main(String[] args) {
+        MyLinkedList707 myLinkedList707 = new MyLinkedList707();
+        myLinkedList707.addAtHead(1);
+        myLinkedList707.addAtTail(3);
+        //myLinkedList707.addAtIndex(1,2);
+        //System.out.println(myLinkedList707.get(1));
+        myLinkedList707.deleteAtIndex(0);
+        System.out.println(myLinkedList707.get(1));
+    }
     /**
      * Your MyLinkedList object will be instantiated and called as such:
      * MyLinkedList obj = new MyLinkedList();
@@ -77,7 +86,7 @@ public class MyLinkedList707 {
             return -1;
         }
         LinkedNode current = this.node;
-        for (int i = 1; i < index; i++) {
+        for (int i = 0; i <= index; i++) {
             current = current.next;
         }
         return current.val;
@@ -85,8 +94,12 @@ public class MyLinkedList707 {
 
     public void addAtHead(int val) {
         LinkedNode newNode = new LinkedNode(val);
-        newNode.next = this.node;
-        this.node = newNode;
+        if (this.size == 0) {
+            this.node = newNode;
+        } else {
+            newNode.next = this.node;
+            this.node = newNode;
+        }
         size++;
     }
 
@@ -97,7 +110,7 @@ public class MyLinkedList707 {
             this.node = newNode;
         } else {
             LinkedNode last = this.node;
-            for (int i = 0; i < this.size; i++) {
+            for (int i = 0; i <= this.size; i++) {
                 last = last.next;
             }
 
@@ -111,15 +124,16 @@ public class MyLinkedList707 {
             return;
         }
 
-        LinkedNode newNode = new LinkedNode(0);
+        LinkedNode newNode = new LinkedNode(val);
         if (this.size == 0) {
             this.node = newNode;
         } else {
             LinkedNode last = this.node;
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i <= index; i++) {
                 last = last.next;
             }
 
+            newNode.next = last.next;
             last.next = newNode;
         }
         size++;
@@ -130,10 +144,10 @@ public class MyLinkedList707 {
             return;
         }
         LinkedNode current = this.node;
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i <= index; i++) {
             current = current.next;
         }
-        current.next = current.next.next;
+        //current.next = current.next.next;
         size--;
     }
 }

@@ -1,4 +1,4 @@
-package com.wallen.nio;
+package com.wallen.nio.server;
 
 import com.wallen.common.Constant;
 

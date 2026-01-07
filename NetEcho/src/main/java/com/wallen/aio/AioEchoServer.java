@@ -31,12 +31,13 @@ class EchoHandler implements CompletionHandler<Integer, ByteBuffer> {
     public void completed(Integer result, ByteBuffer buffer) {
         buffer.flip();
         String readMessage = new String(buffer.array(), 0, buffer.remaining()).trim();
-        System.out.println("【服务端接收到消息内容】" + readMessage);
+        System.out.println("【服务端接收到消息内容】" + readMessage + "\n");
         String resultMessage = "【ECHO】" + readMessage;
         if ("exit".equalsIgnoreCase(readMessage)) {
-            resultMessage = "【EXIT】 Bye Bye...";
+            resultMessage = "【EXIT】 Bye Bye...\n";
             this.exit = true;
         }
+        this.echoWrite(resultMessage);
     }
 
     private void echoWrite(String result) {
@@ -50,13 +51,12 @@ class EchoHandler implements CompletionHandler<Integer, ByteBuffer> {
                 if (attachment.hasRemaining()) {
                     EchoHandler.this.clientChannel.write(buffer, buffer, this);
                 } else {
-                    if (EchoHandler.this.exit) {
+                    if (!EchoHandler.this.exit) {
                         //需要继续交互
                         ByteBuffer readBuffer = ByteBuffer.allocate(50);
                         EchoHandler.this.clientChannel.read(readBuffer, readBuffer, new EchoHandler(EchoHandler.this.clientChannel));
                     }
                 }
-
             }
 
             @Override

@@ -1,4 +1,4 @@
-package com.wallen.nio.client;
+package com.wallen.io.nio;
 
 import com.wallen.common.Constant;
 import com.wallen.util.InputUtil;
@@ -14,20 +14,10 @@ import java.nio.channels.SocketChannel;
  * @Author qianwenlong
  * @Date 2025/12/29 15:42
  */
-public class NioEchoClient {
-    public static void main(String[] args) {
-        try (EchoClientHandler echoClientHandler = new EchoClientHandler()) {
+public class NioEchoClientHandler implements AutoCloseable {
+    private final SocketChannel clientChannel;
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-class EchoClientHandler implements AutoCloseable {
-    private SocketChannel clientChannel;
-
-    public EchoClientHandler() throws IOException {
+    public NioEchoClientHandler() throws IOException {
         //创建一个客户端连接通道实例
         this.clientChannel = SocketChannel.open();
         //设置要连接的主机信息，包括主机名称及端口号

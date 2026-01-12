@@ -1,4 +1,4 @@
-package com.wallen.bio.server;
+package com.wallen.io.bio;
 
 import com.wallen.common.Constant;
 
@@ -8,12 +8,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
-class EchoServerHandler implements AutoCloseable {
-    private ServerSocket serverSocket;
+public class BioEchoServerHandler implements AutoCloseable {
+    private final ServerSocket serverSocket;
 
-    public EchoServerHandler() throws IOException {
+    public BioEchoServerHandler() throws IOException {
         //服务器端的socket启动
         serverSocket = new ServerSocket(Constant.PORT);
         System.out.println("ECHO服务端已经启动了，该服务再" + Constant.PORT + "端口上监听...");
@@ -21,18 +20,15 @@ class EchoServerHandler implements AutoCloseable {
     }
 
     private void clientConnect() throws IOException {
-        boolean serverFlag = true;
-        while (serverFlag) {
+        while (true) {
             //等待客户端连接
             Socket client = this.serverSocket.accept();
             Thread thread = new Thread(() -> {
-                BufferedReader reader = null;
-                PrintStream out = null;
                 try {
                     // 使用BufferedReader替代Scanner，更适用于网络流
-                    reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
                     //服务器输出为客户端输入
-                    out = new PrintStream(client.getOutputStream());
+                    PrintStream out = new PrintStream(client.getOutputStream());
                     boolean clientFlag = true;
                     while (clientFlag && !client.isClosed() && !Thread.currentThread().isInterrupted()) {
                         // 读取一行输入
@@ -64,18 +60,5 @@ class EchoServerHandler implements AutoCloseable {
     @Override
     public void close() throws Exception {
         this.serverSocket.close();
-    }
-}
-
-/**
- * 实现服务器端的编写开发，采用BIO（阻塞式）实现开发的集成结构
- *
- * @Author qianwenlong
- * @Date 2025/12/25 8:47
- */
-public class EchoServer {
-    public static void main(String[] args) throws IOException {
-        EchoServerHandler echoServerHandler = new EchoServerHandler();
-
     }
 }

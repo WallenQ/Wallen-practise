@@ -1,4 +1,4 @@
-package com.wallen.bio.client;
+package com.wallen.io.bio;
 
 import com.wallen.common.Constant;
 import com.wallen.util.InputUtil;
@@ -14,10 +14,10 @@ import java.net.Socket;
  * @Date 2025/12/25 12:56
  */
 
-class EchoClientHandler implements AutoCloseable {
-    private Socket client;
+public class BioEchoClientHandler implements AutoCloseable {
+    private final Socket client;
 
-    public EchoClientHandler() throws IOException {
+    public BioEchoClientHandler() throws IOException {
         this.client = new Socket(Constant.HOST, Constant.PORT);
         System.out.println("已经成功连接到服务器，可以进行消息发送");
         this.accessServer();
@@ -51,11 +51,5 @@ class EchoClientHandler implements AutoCloseable {
     @Override
     public void close() throws Exception {
         this.client.close();
-    }
-}
-
-public class EchoClient {
-    public static void main(String[] args) throws IOException {
-        new EchoClientHandler();
     }
 }

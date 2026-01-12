@@ -17,6 +17,7 @@
         <module>springboot-test</module>
         <module>spring-test</module>
         <module>NetEcho</module>
+        <module>old</module>
     </modules>
     <packaging>pom</packaging>
 </project>

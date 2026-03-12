@@ -16,8 +16,8 @@
         <module>spring-boot2-book-practise</module>
         <module>springboot-test</module>
         <module>spring-test</module>
-        <module>NetEcho</module>
         <module>old</module>
+        <module>netty-test</module>
     </modules>
     <packaging>pom</packaging>
 </project>

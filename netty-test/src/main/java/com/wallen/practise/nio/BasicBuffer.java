@@ -15,10 +15,12 @@ public class BasicBuffer {
         intBuffer.put(11);
         intBuffer.put(12);
         intBuffer.put(13);
-        intBuffer.put(14);
+        //intBuffer.put(14);
 
         //如何从buffer读取数据
         intBuffer.flip();
+
+        intBuffer.position(1);
 
         while(intBuffer.hasRemaining()){
             System.out.println(intBuffer.get());

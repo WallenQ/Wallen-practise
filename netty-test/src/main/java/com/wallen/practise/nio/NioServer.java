@@ -41,13 +41,15 @@ public class NioServer {
             while (iterator.hasNext()) {
                 SelectionKey selectionKey = iterator.next();
                 if (selectionKey.isAcceptable()) {
-                    //有新的客户端连接
+                    //有新的客户端连接，从 ServerSocketChannel 新接受的连接；
+                    //ServerSocketChannel 注册用于接收连接
                     SocketChannel socketChannel = serverSocketChannel.accept();
                     System.out.println("client connected：" + socketChannel.hashCode() );
                     socketChannel.configureBlocking(false);
                     //将socketChannel注册到selector
                     socketChannel.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(1024));
                 } else if (selectionKey.isReadable()) {
+                    //SocketChannel 注册用于读写数据
                     SocketChannel channel = (SocketChannel) selectionKey.channel();
                     ByteBuffer buffer = (ByteBuffer) selectionKey.attachment();
                     channel.read(buffer);

@@ -35,7 +35,9 @@ public class NioServer {
                 continue;
             }
             //获取相关的selectionKey集合
+            //有事件发生的 SelectionKey（可读、可写、连接等）-活跃的
             Set<SelectionKey> selectionKeys = selector.selectedKeys();
+            System.out.println("selectionKeys size:" + selectionKeys.size());
             Iterator<SelectionKey> iterator = selectionKeys.iterator();
 
             while (iterator.hasNext()) {
@@ -44,10 +46,12 @@ public class NioServer {
                     //有新的客户端连接，从 ServerSocketChannel 新接受的连接；
                     //ServerSocketChannel 注册用于接收连接
                     SocketChannel socketChannel = serverSocketChannel.accept();
-                    System.out.println("client connected：" + socketChannel.hashCode() );
+                    System.out.println("client connected：" + socketChannel.hashCode());
                     socketChannel.configureBlocking(false);
                     //将socketChannel注册到selector
                     socketChannel.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(1024));
+                    //所有注册到 selector 的 SelectionKey
+                    System.out.println("selector keys size:" + selector.keys().size());
                 } else if (selectionKey.isReadable()) {
                     //SocketChannel 注册用于读写数据
                     SocketChannel channel = (SocketChannel) selectionKey.channel();

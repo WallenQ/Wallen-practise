@@ -94,10 +94,19 @@ public class GroupChatServer {
 
             //根据count值做处理
             if (count > 0) {
-                //把缓冲区数据转换成字符串
+                /*//把缓冲区数据转换成字符串
                 String msg = new String(buffer.array());
                 System.out.println("From Client: " + msg);
                 //向其他客户端转发消息
+                sendInfoToOtherClients(msg, channel);*/
+
+                // 翻转缓冲区,准备读取数据
+                buffer.flip();
+                // 只转换实际读取到的字节数
+                byte[] bytes = new byte[count];
+                buffer.get(bytes);
+                String msg = new String(bytes);
+                System.out.println("From Client: " + msg);
                 sendInfoToOtherClients(msg, channel);
             }
         } catch (IOException e) {

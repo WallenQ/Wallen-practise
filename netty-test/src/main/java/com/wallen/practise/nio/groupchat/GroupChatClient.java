@@ -61,9 +61,16 @@ public class GroupChatClient {
                     if (key.isReadable()) {
                         SocketChannel sc = (SocketChannel) key.channel();
                         ByteBuffer buffer = ByteBuffer.allocate(1024);
-                        sc.read(buffer);
-                        System.out.println(new String(buffer.array()));
+                        int read = sc.read(buffer);
+
+                        buffer.flip();
+                        // 只转换实际读取到的字节数
+                        byte[] bytes = new byte[read];
+                        buffer.get(bytes);
+                        String msg = new String(bytes);
+                        System.out.println(msg);
                     }
+                    iterator.remove();
                 }
             } else {
                 //System.out.println("no channel ...");

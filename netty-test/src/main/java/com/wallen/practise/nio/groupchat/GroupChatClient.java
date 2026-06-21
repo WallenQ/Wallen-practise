@@ -7,6 +7,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * @Author qianwenlong
@@ -25,7 +26,7 @@ public class GroupChatClient {
     public GroupChatClient() throws IOException {
         selector = Selector.open();
 
-        socketChannel.open(new InetSocketAddress(HOST, PORT));
+        socketChannel = socketChannel.open(new InetSocketAddress(HOST, PORT));
 
         socketChannel.configureBlocking(false);
 
@@ -65,14 +66,34 @@ public class GroupChatClient {
                     }
                 }
             } else {
-                System.out.println("no channel ...");
+                //System.out.println("no channel ...");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        //启动客户端
+        GroupChatClient chatClient = new GroupChatClient();
 
+        //每隔三秒，从服务器端读取数据
+        new Thread(() -> {
+            while (true) {
+                chatClient.readInfo();
+                try {
+                    Thread.sleep(3000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+        //发送数据给服务器端
+        Scanner scanner = new Scanner(System.in);
+        while(scanner.hasNextLine()) {
+            String s = scanner.nextLine();
+            chatClient.sendInfo(s);
+        }
     }
 }

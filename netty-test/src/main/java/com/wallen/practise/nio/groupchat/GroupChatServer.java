@@ -42,7 +42,7 @@ public class GroupChatServer {
     public void listen() {
         try {
             while (true) {
-                int count = selector.select(2000);
+                int count = selector.select();
                 if (count > 0) {
                     //有事件要处理
 
@@ -55,6 +55,7 @@ public class GroupChatServer {
                         //监听到accept
                         if (key.isAcceptable()) {
                             SocketChannel sc = listenChannel.accept();
+                            sc.configureBlocking(false);
                             //注册到selector
                             sc.register(selector, SelectionKey.OP_READ);
                             System.out.println(sc.getRemoteAddress() + " online");
@@ -135,6 +136,6 @@ public class GroupChatServer {
     }
 
     public static void main(String[] args) {
-
+        new GroupChatServer().listen();
     }
 }

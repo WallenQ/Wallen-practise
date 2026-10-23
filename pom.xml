@@ -18,6 +18,7 @@
         <module>spring-test</module>
         <module>old</module>
         <module>netty-test</module>
+        <module>NettyPro</module>
     </modules>
     <packaging>pom</packaging>
 </project>

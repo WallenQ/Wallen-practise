@@ -17,8 +17,8 @@ public class NettyServer {
     public static void main(String[] args) throws InterruptedException {
         //创建BossGroup和WorkerGroup
         //bossGroup处理连接请求，workerGroup处理业务
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        EventLoopGroup workerGroup = new NioEventLoopGroup(8);
         try {
 
             //创建服务端的启动对象

@@ -19,15 +19,39 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         // super.channelRead(ctx, msg);
-        System.out.println("服务端线程名： " + Thread.currentThread().getName());
-        System.out.println("server ctx = " + ctx);
+        //System.out.println("服务端线程名： " + Thread.currentThread().getName());
+        //System.out.println("server ctx = " + ctx);
+        //
+        //Channel channel = ctx.channel();
+        //ChannelPipeline pipeline = ctx.pipeline();
+        //
+        //ByteBuf buf = (ByteBuf) msg;
+        //System.out.println("客户端发送的消息是:" + buf.toString(CharsetUtil.UTF_8));
+        //System.out.println("客户端地址： " + channel.remoteAddress());
 
-        Channel channel = ctx.channel();
-        ChannelPipeline pipeline = ctx.pipeline();
-
-        ByteBuf buf = (ByteBuf) msg;
-        System.out.println("客户端发送的消息是:" + buf.toString(CharsetUtil.UTF_8));
-        System.out.println("客户端地址： " + channel.remoteAddress());
+        ctx.channel().eventLoop().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(10 * 1000);
+                    ctx.writeAndFlush(Unpooled.copiedBuffer("hello client 1： " + System.currentTimeMillis(),CharsetUtil.UTF_8));
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        ctx.channel().eventLoop().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(20 * 1000);
+                    ctx.writeAndFlush(Unpooled.copiedBuffer("hello client 2: " + System.currentTimeMillis(),CharsetUtil.UTF_8));
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        System.out.println("go on...");
     }
 
     /**

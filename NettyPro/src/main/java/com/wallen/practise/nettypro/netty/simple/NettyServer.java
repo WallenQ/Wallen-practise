@@ -36,6 +36,7 @@ public class NettyServer {
                          */
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            System.out.println("当前client channel：  " + socketChannel.hashCode());
                             socketChannel.pipeline().addLast(new NettyServerHandler());
                         }
                     });//给workerGroup的EventLoop对应的管道设置处理器
@@ -46,7 +47,7 @@ public class NettyServer {
 
             //对关闭通道进行监听
             channelFuture.channel().closeFuture().sync();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             bossGroup.shutdownGracefully();

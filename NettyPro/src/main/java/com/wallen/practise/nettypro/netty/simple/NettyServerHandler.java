@@ -1,12 +1,10 @@
 package com.wallen.practise.nettypro.netty.simple;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelPipeline;
 import io.netty.util.CharsetUtil;
+import java.util.concurrent.TimeUnit;
 
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     /**
@@ -29,28 +27,31 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         //System.out.println("客户端发送的消息是:" + buf.toString(CharsetUtil.UTF_8));
         //System.out.println("客户端地址： " + channel.remoteAddress());
 
-        ctx.channel().eventLoop().execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(10 * 1000);
-                    ctx.writeAndFlush(Unpooled.copiedBuffer("hello client 1： " + System.currentTimeMillis(),CharsetUtil.UTF_8));
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+        ctx.channel().eventLoop().execute(() -> {
+            try {
+                Thread.sleep(10 * 1000);
+                ctx.writeAndFlush(Unpooled.copiedBuffer("hello client 1： " + System.currentTimeMillis(),CharsetUtil.UTF_8));
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         });
-        ctx.channel().eventLoop().execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(20 * 1000);
-                    ctx.writeAndFlush(Unpooled.copiedBuffer("hello client 2: " + System.currentTimeMillis(),CharsetUtil.UTF_8));
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+        ctx.channel().eventLoop().execute(() -> {
+            try {
+                Thread.sleep(20 * 1000);
+                ctx.writeAndFlush(Unpooled.copiedBuffer("hello client 2: " + System.currentTimeMillis(),CharsetUtil.UTF_8));
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         });
+
+        ctx.channel().eventLoop().schedule(() -> {
+            try {
+                Thread.sleep(10 * 1000);
+                ctx.writeAndFlush(Unpooled.copiedBuffer("hello client 3： " + System.currentTimeMillis(),CharsetUtil.UTF_8));
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        },5, TimeUnit.SECONDS);
         System.out.println("go on...");
     }
 

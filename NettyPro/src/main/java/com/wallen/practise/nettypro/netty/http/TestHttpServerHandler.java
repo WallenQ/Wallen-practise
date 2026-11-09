@@ -13,6 +13,8 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
 
+import java.net.URI;
+
 /**
  * @Author qianwenlong
  * @Date 2026/11/6 15:38
@@ -27,11 +29,21 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
      */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, HttpObject httpObject) throws Exception {
-        if (httpObject instanceof HttpRequest) {
+        if (httpObject instanceof HttpRequest httpRequest) {
+
+            System.out.println("pipeline hashcode : " + channelHandlerContext.pipeline().hashCode()
+                    + ", TestHttpServerHandler hashcode: " + this.hashCode());
             System.out.println("httpObject 类型：" + httpObject.getClass());
             System.out.println("客户端地址：" + channelHandlerContext.channel().remoteAddress());
 
             ByteBuf content = Unpooled.copiedBuffer("Hello, 我是服务器", CharsetUtil.UTF_8);
+
+            //获取uri，过滤指定资源
+            URI uri = new URI(httpRequest.uri());
+            if ("/favicon.ico".equals(uri.getPath())) {
+                System.out.println("请求了favicon.ico");
+                return;
+            }
 
             //构建http响应
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);

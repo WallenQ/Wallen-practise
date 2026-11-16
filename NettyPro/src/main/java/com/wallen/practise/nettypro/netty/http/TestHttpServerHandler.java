@@ -29,7 +29,13 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
      */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, HttpObject httpObject) throws Exception {
+        System.out.println("对应的channel = " + channelHandlerContext.channel()
+                + ", pipeline = " + channelHandlerContext.pipeline()
+                + " 通过pipeline获取channel = " + channelHandlerContext.pipeline().channel());
+        System.out.println("当前channelHandlerContext = " + channelHandlerContext.handler());
+
         if (httpObject instanceof HttpRequest httpRequest) {
+            System.out.println("ctx 类型 =  " + channelHandlerContext.getClass());
 
             System.out.println("pipeline hashcode : " + channelHandlerContext.pipeline().hashCode()
                     + ", TestHttpServerHandler hashcode: " + this.hashCode());

@@ -8,6 +8,8 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
 import java.text.SimpleDateFormat;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author qianwenlong
@@ -17,6 +19,8 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
     private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
     SimpleDateFormat fdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    private static final Map<String, Channel> channelMap = new ConcurrentHashMap<>();
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
@@ -42,6 +46,7 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
         Channel channel = ctx.channel();
         channelGroup.writeAndFlush("[客户端]" + channel.remoteAddress() + " 加入聊天\n");
         channelGroup.add(channel);
+        channelMap.put("",channel);
     }
 
     /**
